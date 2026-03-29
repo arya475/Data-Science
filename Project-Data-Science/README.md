@@ -1,9 +1,9 @@
 # Project-Data-Science
 
-# Heart Age Detector: AI-Based Biological Age Prediction
+# Heart Dasease Detector: AI-Based Heart Health Prediction
 
 Deskripsi Proyek
-Proyek ini adalah eksperimen Machine Learning sederhana untuk mendeteksi "Usia Biologis" jantung manusia berdasarkan data Heart.csv yang diberikan. Tujuan utama dari sistem ini adalah memberikan kesadaran kepada pengguna tentang dampak kolestrol, tekanan darah sistolik, gula darah puasa, dll terhadap kesehatan jantung mereka.
+Proyek ini adalah eksperimen Machine Learning sederhana untuk mendeteksi "Kesehatan Jantung" manusia berdasarkan data Heart.csv yang diberikan. Tujuan utama dari sistem ini adalah memberikan kesadaran kepada pengguna tentang dampak kolestrol, tekanan darah sistolik, gula darah puasa, dll terhadap kesehatan jantung mereka.
 note: Proyek ini saat ini menggunakan Data Simulasi (Heart Disease Dataset) untuk keperluan demonstrasi algoritma dan edukasi dasar Data Science.
 
 Fitur Utama
