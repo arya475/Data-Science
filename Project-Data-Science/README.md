@@ -3,32 +3,32 @@
 # Heart Age Detector: AI-Based Biological Age Prediction
 
 Deskripsi Proyek
-Proyek ini adalah eksperimen Machine Learning sederhana untuk mendeteksi "Usia Biologis" jantung manusia berdasarkan data gaya hidup dan kondisi fisik. Tujuan utama dari sistem ini adalah memberikan kesadaran kepada pengguna tentang dampak stres, pola makan, dan olahraga terhadap kesehatan jantung mereka.
-note: Proyek ini saat ini menggunakan Data Simulasi (Synthetic Data) untuk keperluan demonstrasi algoritma dan edukasi dasar Data Science.
+Proyek ini adalah eksperimen Machine Learning sederhana untuk mendeteksi "Usia Biologis" jantung manusia berdasarkan data Heart.csv yang diberikan. Tujuan utama dari sistem ini adalah memberikan kesadaran kepada pengguna tentang dampak kolestrol, tekanan darah sistolik, gula darah puasa, dll terhadap kesehatan jantung mereka.
+note: Proyek ini saat ini menggunakan Data Simulasi (Heart Disease Dataset) untuk keperluan demonstrasi algoritma dan edukasi dasar Data Science.
 
 Fitur Utama
 
 1. Prediksi Usia Jantung: Menghitung estimasi umur jantung berdasarkan perbandingan dengan usia kronologis (asli).
-2. Analisis Gaya Hidup: Mempertimbangkan variabel seperti Skor Stres, Frekuensi Olahraga, dan Kualitas Pola Makan.
-3. Visualisasi Data: Grafik perbandingan antara usia asli vs usia jantung untuk memudahkan pemahaman pengguna.
+2. Analisis : Mempertimbangkan variabel seperti umur, kolestrol, tekanan darah sistolik, dan tipe nyeri data untuk membuat anilisis kesehatan jantung
+3. Visualisasi Data: Grafik feature importance (bobot yang menjadi perhitungan ai)
 
 Teknologi yang Digunakan
 
 1. Bahasa Pemrograman: Python 3
 2. Analisis Data: Pandas & NumPy
-3. Machine Learning: Scikit-Learn (Linear Regression)
-4. Visualisasi: Matplotlib & Seaborn
+3. Machine Learning: Scikit-Learn (Random Forest Classifier)
+4. Visualisasi: Matplotlib
 
 Cara Kerja Model
-Model ini menggunakan algoritma Linear Regression. Logika dasarnya adalah mencari korelasi linear antara variabel input (fitur) dengan target usia jantung.
+Model ini menggunakan algoritma Random Forest Classifier. Logika dasarnya adalah dibayangkan sebagai sebuah "Musyawarah Besar" yang dilakukan oleh sekumpulan Dokter Digital untuk melakukan voting penilaian.
 Rumus Sederhana yang Dipelajari AI:
-Usia Jantung = Usia Asli + (Stres \times 1.5) - (Olahraga \times 1) - (Nutrisi \times 0.5)
-
-Hasil Visualisasi
-Proyek ini menghasilkan visualisasi tren kesehatan jantung. Salah satu temuan utamanya adalah tingginya korelasi antara Skor Stres terhadap peningkatan usia biologis jantung secara signifikan.
+Rumus untuk mencari score resiko: R = (Age x 0.05) + (Trestbps x 0.15) + (Chol x 0.1) + (CP_Factor).
 
 AI Collaboration
-Proyek ini dikembangkan dengan kolaborasi antara ide orisinal pengembang (Arya) dan bantuan asisten AI (Gemini). AI digunakan untuk membantu: 1. Arsitektur model Machine Learning. 2. Pembuatan data simulasi (Synthetic Data). 3. Optimasi struktur kode Python dan dokumentasi.
+Proyek ini dikembangkan dengan kolaborasi antara ide orisinal pengembang (Arya) dan bantuan asisten AI (Gemini). AI digunakan untuk membantu: 1. Arsitektur model Machine Learning. 2. Optimasi struktur kode Python dan dokumentasi.
 
 Status Proyek: Tahap Awal (Early Stage)
-Proyek ini masih berada dalam Tahap Pengembangan Awal (Prototipe). 1. Target Selanjutnya: Menggunakan dataset medis asli (seperti dataset dari UCI Machine Learning Repository). 2. Pengembangan Algoritma: Mencoba algoritma yang lebih kompleks seperti Random Forest atau Neural Network untuk akurasi yang lebih tinggi. 3. Integrasi UI: Membangun antarmuka web sederhana menggunakan Streamlit agar pengguna bisa memasukkan data mereka sendiri secara langsung.
+Proyek ini masih berada dalam Tahap Pengembangan Awal (Prototipe). 1. Target Selanjutnya: Memberikan data tambahan untuk melatih model AI agar lebih pintar, membangun interface web yang mudah untuk dibaca
+
+Kelemahan model ini:
+Karena masih tahap awal dan data yang diberikan masih relatif mudah maka akurasinya tinggi, belum diuji dengan data yang sulit atau banyak noise.

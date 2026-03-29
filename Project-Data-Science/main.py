@@ -1,23 +1,59 @@
-import numpy as np
+from pathlib import Path
 import pandas as pd
+import numpy  as np
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
 
-import pandas as pd
-import numpy as np
+# Menentukan path file CSV dengan menggunakan pathlib untuk memastikan kompatibilitas lintas platform
+base_path = Path(__file__).parent
+file_path = base_path / 'data' / 'heart.csv'
+df = pd.read_csv(file_path)
 
-# Membuat data simulasi sederhana
-data = {
-    'usia_asli': [20, 25, 30, 45, 50, 22, 35, 40, 28, 60],
-    'skor_stres': [2, 8, 5, 9, 3, 1, 7, 4, 6, 5], # Skala 1-10
-    'olahraga_mingguan': [5, 1, 3, 0, 4, 6, 1, 2, 3, 2], # Frekuensi perminggu
-    'pola_makan_sehat': [8, 4, 6, 3, 7, 9, 4, 5, 6, 6], # Skala 1-10
-}
+#Data fraame dari data hasil UCI Heart Deases Dataset
+new_df = pd.DataFrame(
+    df,
+    columns=['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 
+        'restecg', 'thalach', 'exang', 'oldpeak', 
+        'slope', 'ca', 'thal', 'target'
+        ],    
+)
 
-df = pd.DataFrame(data)
+#Rumus mencari faktor nyeri dada: jika nilai CP=0 (Typical Angina) beri bobot 2. Karena sangat beresiko
+new_df['cp_faktor'] = np.where(new_df['cp'] == 0, 2, 0)
 
-# Rumus logika sederhana untuk membuat "Target" (Usia Jantung)
-# Aturan: Stres nambah umur, Olahraga ngurangin umur
-df['usia_jantung'] = df['usia_asli'] + (df['skor_stres'] * .8) - (df['olahraga_mingguan'] * 1) - (df['pola_makan_sehat']*.5) 
+#Rumus untuk mencari score resiko: R = (Age x 0.05) + (Trestbps x 0.15) + (Chol x 0.1) + (CP_Factor). 
+new_df['Score'] = (
+    (new_df['age']* 0.05) + 
+    (new_df['trestbps']*0.15) + 
+    (new_df['chol']*0.1) + 
+    new_df['cp_faktor']
+    )
 
-print("Data Simulasi Project Jantung:")
-#print(df.head())
-print(df)
+#Klasifikasi data berdasarkan faktor resiko
+def tentukan_status(Score):
+    if Score < 40: return "Rendah"
+    elif 40<=Score<50: return "Sedang"
+    else: return "Tinggi"
+new_df['Status_resiko'] = new_df['Score'].apply(tentukan_status)
+
+
+#Pemisahan untuk fitur(X) dan Target(y) untuk scikit learn
+X = new_df.drop(columns=['target','cp_faktor','Score','Status_resiko'])
+y = new_df['target']
+
+#Menggunakan Decision Tree untuk klasifikasi
+model = RandomForestClassifier(max_depth=5, random_state=42)
+model = model.fit(X, y)
+#Menampilkan feature importance dan akurasi model
+df = pd.DataFrame(model.feature_importances_, index=X.columns, columns=['Importance'])
+print("Akurasi Model Random Forest:", f"{model.score(X, y)*100:.2f}", "%")
+
+# Visualisasi Feature Importance
+df.plot(kind='bar')
+plt.title('Feature Importance AI Model')
+plt.xlabel('Features')
+plt.ylabel('Importance')
+plt.show()
+
+
+
