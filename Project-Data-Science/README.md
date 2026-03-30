@@ -12,6 +12,8 @@ Fitur Utama
 2. Analisis : Mempertimbangkan variabel seperti umur, kolestrol, tekanan darah sistolik, tipe nyeri dada,dll untuk membuat anilisis kesehatan jantung
 3. Visualisasi Data: Grafik feature importance (bobot yang menjadi perhitungan ai) #hanya dapat terlihat ketika menjaalankan code otak Ai dan tidak ditampilkan di web
 4. Tampilan web : Berisi deteksi kesehatan jantung dengan memasukkan hasil pemeriksaan pasien(Dimana perhitungannya menggunakan model Ai yang sudah dilatih)
+   <img width="1861" height="851" alt="Screenshot 2026-03-30 111222" src="https://github.com/user-attachments/assets/ece61762-f070-458c-8046-8f485492a68f" />
+
 
 Teknologi yang Digunakan
 
