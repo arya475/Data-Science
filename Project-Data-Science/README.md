@@ -1,6 +1,6 @@
 # Project-Data-Science
 
-# Heart Dasease Detector: AI-Based Heart Health Prediction
+# Heart Disease Detector: AI-Based Heart Health Prediction
 
 Deskripsi Proyek
 Proyek ini adalah eksperimen Machine Learning sederhana untuk mendeteksi "Kesehatan Jantung" manusia berdasarkan data Heart.csv yang diberikan. Tujuan utama dari sistem ini adalah memberikan kesadaran kepada pengguna tentang dampak kolestrol, tekanan darah sistolik, gula darah puasa, dll terhadap kesehatan jantung mereka.
@@ -8,16 +8,17 @@ note: Proyek ini saat ini menggunakan Data Simulasi (Heart Disease Dataset) untu
 
 Fitur Utama
 
-1. Prediksi Usia Jantung: Menghitung estimasi umur jantung berdasarkan perbandingan dengan usia kronologis (asli).
-2. Analisis : Mempertimbangkan variabel seperti umur, kolestrol, tekanan darah sistolik, dan tipe nyeri data untuk membuat anilisis kesehatan jantung
-3. Visualisasi Data: Grafik feature importance (bobot yang menjadi perhitungan ai)
+1. Prediksi Usia Jantung: Menghitung kesehatan jantung berdasarkan perbandingan dengan usia kronologis (asli).
+2. Analisis : Mempertimbangkan variabel seperti umur, kolestrol, tekanan darah sistolik, tipe nyeri dada,dll untuk membuat anilisis kesehatan jantung
+3. Visualisasi Data: Grafik feature importance (bobot yang menjadi perhitungan ai) #hanya dapat terlihat ketika menjaalankan code otak Ai dan tidak ditampilkan di web
+4. Tampilan web : Berisi deteksi kesehatan jantung dengan memasukkan hasil pemeriksaan pasien(Dimana perhitungannya menggunakan model Ai yang sudah dilatih)
 
 Teknologi yang Digunakan
 
 1. Bahasa Pemrograman: Python 3
 2. Analisis Data: Pandas & NumPy
 3. Machine Learning: Scikit-Learn (Random Forest Classifier)
-4. Visualisasi: Matplotlib
+4. Visualisasi: Matplotlib, Streamlit
 
 Cara Kerja Model
 Model ini menggunakan algoritma Random Forest Classifier. Logika dasarnya adalah dibayangkan sebagai sebuah "Musyawarah Besar" yang dilakukan oleh sekumpulan Dokter Digital untuk melakukan voting penilaian.
