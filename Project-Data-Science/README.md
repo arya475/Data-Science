@@ -26,7 +26,7 @@ Teknologi yang Digunakan
 
 Cara Kerja Model
 Model ini menggunakan algoritma Random Forest Classifier. Logika dasarnya adalah dibayangkan sebagai sebuah "Musyawarah Besar" yang dilakukan oleh sekumpulan Dokter Digital untuk melakukan voting penilaian.
-Rumus Sederhana yang Dipelajari AI:
+Rumus Sederhana yang sebagai perbandingan:
 Rumus untuk mencari score resiko: R = (Age x 0.05) + (Trestbps x 0.15) + (Chol x 0.1) + (CP_Factor).
 
 AI Collaboration
