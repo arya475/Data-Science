@@ -3,6 +3,7 @@ import pandas as pd
 import numpy  as np
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 import joblib
 
 # Menentukan path file CSV dengan menggunakan pathlib untuk memastikan kompatibilitas lintas platform
@@ -37,22 +38,21 @@ def tentukan_status(Score):
     else: return "Tinggi"
 new_df['Status_resiko'] = new_df['Score'].apply(tentukan_status)
 
-
 #Pemisahan untuk fitur(X) dan Target(y) untuk scikit learn
 X = new_df.drop(columns=['target','cp_faktor','Score','Status_resiko'])
 y = new_df['target']
 
-#Menggunakan Decision Tree untuk klasifikasi
-model = RandomForestClassifier(max_depth=5, random_state=42)
-model = model.fit(X, y)
-joblib.dump(model, 'heart_model.pkl')
-print(model.predict(X))
-print(new_df)
+# Pemisahan data untuk training dan testing
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+#Menggunakan Decision Tree untuk klasifikasi
+model = RandomForestClassifier(max_depth=6, random_state=42)
+model = model.fit(X_train, y_train)
+joblib.dump(model, 'heart_model.pkl')
 
 #Menampilkan feature importance dan akurasi model
 df = pd.DataFrame(model.feature_importances_, index=X.columns, columns=['Importance'])
-print("Akurasi Model Random Forest:", f"{model.score(X, y)*100:.2f}", "%")
+print("Akurasi Model Random Forest:", f"{model.score(X_test, y_test)*100:.2f}", "%")
 
 # Visualisasi Feature Importance
 df.plot(kind='bar')
