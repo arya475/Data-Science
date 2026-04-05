@@ -9,7 +9,8 @@ import joblib
 # Menentukan path file CSV dengan menggunakan pathlib untuk memastikan kompatibilitas lintas platform
 base_path = Path(__file__).parent
 file_path = base_path / 'data' / 'heart.csv'
-df = pd.read_csv(file_path)
+file_path1 = base_path / 'data' / 'heart10k.csv'
+df = pd.read_csv(file_path1)
 
 #Data fraame dari data hasil UCI Heart Deases Dataset
 new_df = pd.DataFrame(
@@ -46,14 +47,14 @@ y = new_df['target']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 #Menggunakan Decision Tree untuk klasifikasi
-model = RandomForestClassifier(max_depth=6, random_state=42)
+model = RandomForestClassifier(max_depth=8, random_state=42)
 model = model.fit(X_train, y_train)
 joblib.dump(model, 'heart_model.pkl')
 
 #Menampilkan feature importance dan akurasi model
 df = pd.DataFrame(model.feature_importances_, index=X.columns, columns=['Importance'])
 print("Akurasi Model Random Forest:", f"{model.score(X_test, y_test)*100:.2f}", "%")
-
+print(new_df)
 # Visualisasi Feature Importance
 df.plot(kind='bar')
 plt.title('Feature Importance AI Model')
