@@ -2,7 +2,3 @@ pandas
 numpy
 matplotlib
 scikit-learn
-pathlib
-joblib
-streamlit
-os
